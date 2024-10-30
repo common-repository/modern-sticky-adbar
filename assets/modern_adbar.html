@@ -1,0 +1,118 @@
+<?php 
+	if(get_option('msab_adbar_style')=='style1'){
+		$dis='block';
+	}
+	else{
+		$dis='none';
+	}
+	if(get_option('msab_adbar_style')=='style2'){
+		$disp='block';
+	}
+	else{
+		$disp='none';
+	}
+?>
+<div id='mordern_adbar_wrap' style='display:<?php echo $dis; ?>;'>
+	<div class="anchor_ad_top_border"></div>
+	<div class="anchor_ad_close_wrapper">
+        <div id="anchor_ad_close" class="anchor_ad_close">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+	<div id='msab_content'>
+		<p id='sticky_ad_bar'><?php echo do_shortcode(get_option('msab_content')); ?></p>
+	</div>
+</div>
+<div id='mordern_adbar_wrap' style='display:<?php echo $disp; ?>;'>
+	<div class="hide_warp">
+		<div id='msab_content'>
+			<p id='sticky_ad_bar'><?php echo do_shortcode(get_option('msab_content')); ?></p>
+		</div>
+		<div id='msab_close' onclick="hide();" class="anchor_ad_close" > 
+			<img src="<?php echo plugins_url('/images/close.png',__FILE__); ?>" alt="Close" id='msab_ad_close'>
+		</div>
+	</div>
+</div>
+<style type="text/css">	
+	#msab_close{
+		float: left;
+		width: 3%;
+		text-align: center;
+		padding-top: 7px;
+		position: absolute;
+		right:0;
+		top:-22px;
+		cursor: pointer;
+	}
+	#mordern_adbar_wrap{
+		margin:0 auto;
+		<?php if  ( wp_is_mobile() ) { ?> /* width */
+			width:<?php echo $msab_bar_width_mob; ?>%;
+			<?php } else { ?>
+			width:<?php echo $msab_bar_width; ?>%;
+			<?php } ?>
+		<?php if  ( wp_is_mobile() ) { ?> /* Height */
+			height:<?php echo $msab_bar_height_mob; ?>;
+			<?php } else { ?>
+			height:<?php echo $msab_bar_height; ?>;
+			<?php } ?>
+		<?php if  ( wp_is_mobile() ) { ?> /* Background */
+			background:<?php echo $msab_background_color_mob; ?>;
+			<?php } else { ?>
+			background:<?php echo $msab_background_color; ?>;
+			<?php } ?>
+		position: fixed;
+		bottom: 0;
+  		left: 0;
+  		right: 0;
+  		z-index: 99999;
+	}
+	#msab_content{
+		width: 100%;
+		float: right;
+		display: inline-block;
+		text-align: center;
+	}
+	#msab_content p img{
+		max-width:100%;
+	}
+	#msab_content p {
+		margin:5px 0;
+	}
+	.anchor_ad_top_border{
+		background: #d8d8d8 none repeat scroll 0 0;
+		box-shadow: 0 0 8px #999;
+		height: 15px;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: -15px;
+	}
+	.anchor_ad_close_wrapper{
+		height: 20px;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: -25px;
+	}
+	
+	#anchor_ad_close {
+		background-color: #d8d8d8;
+		border-radius: 28px 28px 0 0;
+		height: 14px;
+		margin: 0 auto;
+		padding: 5px 10px;
+		width: 35px;
+	}
+	#anchor_ad_close .bar{
+		background: grey none repeat scroll 0 0;
+		height: 2px;
+		margin: 2px 0;
+		width: 100%;
+	}
+	#anchor_ad_close{
+		cursor: pointer;
+	}
+</style>
